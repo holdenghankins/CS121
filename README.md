@@ -1,5 +1,6 @@
 # CS121-OOPHorseRace
 
+My final code of course diviated from this, but I want to preserve my original thought process
 classDiagram
 
 class Horse {
