@@ -104,6 +104,7 @@ int main() {
                         break;
                 }
             }
+            earnings += bet;
             printf("\nCurrent payout: $%d", earnings);
         }
         playAgain = track.askNewGame();
