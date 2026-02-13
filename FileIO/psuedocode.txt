@@ -1,0 +1,75 @@
+FileIO {  
+    Struct dataPoint {
+        int num1
+        int num2
+        String text
+        bool error
+    }
+    
+    dataPoint readLine(read_file) {
+        int num1
+        int num2
+        String text
+
+        read nextChar
+        while (nextChar != ',' && next char != null) {
+            num1 = (num1 * 10) + nextChar
+            read nextChar
+        }
+        while (nextChar != ',' && next char != null) {
+            num2 = (num2 * 10) + nextChar
+            read nextChar
+        }
+        while (nextChar != endOfFile) {
+            text += nextChar
+            read nextChar
+        }
+    }
+
+    bool writeLine(dataPoint, write_file) {
+
+        int timesToWrite = num1 * num2
+        if timesToWrite == 0 {
+            return
+        }
+
+        /*
+        formatted text[space]text[space]...n
+        Since first iteration is not preceded by [space], add first seperately
+        */
+
+        write(text)
+
+        for (i = 1; timesToWrite - 1)   {
+            write(" " + text)
+        }
+
+        return true
+    }
+
+    int main() {
+        // I might try to do with with exception
+        out_file.open(read_file)
+        if (open) {
+            printf(error message)
+            return -1
+        }
+
+        out_file.open(write_file)
+        if (not open) {
+            printf(error message)
+            return -1
+        }
+        
+        while (not end of file) {
+            if (!readLine) {
+                printf(error message)
+                return -1
+            }
+            if (!writeLine) {
+                return -1
+            }
+        }
+        return -1
+    }
+}
