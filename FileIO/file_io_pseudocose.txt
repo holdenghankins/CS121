@@ -1,4 +1,10 @@
 FileIO {  
+
+    /*
+    NOTE: I realized after writing this that I'm printing, not writing. But I'm keeping the pseudo the same for documentation's
+    sake
+    */
+    
     Struct dataPoint {
         int num1
         int num2
