@@ -1,0 +1,27 @@
+array months[13] = {null to align with numbered months, months}
+
+class Date {
+    - int day
+    - int month
+    - int year
+}
+
+class Name {
+    - std::string firstName
+    - std::string lastName
+}
+
+class Adress {
+    - std::string street
+    - std::string city
+    - std::string state
+    - int zip
+}
+
+class Student {
+    - Name name
+    - Adress Adress
+    - Date birthday
+    - Date gradDay
+    - int credits
+}
