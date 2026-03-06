@@ -10,14 +10,16 @@ using namespace std;
 
 class Student {
     private:
-        Name name;
-        Address address;
-        Date birthday;
-        Date graduation;
+        Name* namePtr;
+        Address* addressPtr;
+        Date* birthdayPtr;
+        Date* graduationPtr;
         int credits;
     public:
-        Student(Name name, Address address, Date birthday, Date graduation, int credits);
+        Student(Name* namePtr, Address* addressPtr, Date* birthdayPtr, Date* graduationPtr, int credits);
         Student(std::string studentString);
+        Student();
+        ~Student();
         Name getName();
         void printStudent();
         
