@@ -20,7 +20,7 @@ class Student {
         Student(std::string studentString);
         Student();
         ~Student();
-        Name getName();
+        Name* getName();
         void printStudent();
         
 };

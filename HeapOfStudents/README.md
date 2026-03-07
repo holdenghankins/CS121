@@ -72,6 +72,7 @@ StudentData {
     void delStudents(std::vector<Student*>& students) {
         v.pop_back();
     }
+    
     std::string menu() {
         cout << "0) quit\n1) print all student names\n2) print all student data\n3) find a student\n\nplease choose 0-3: ";
     }

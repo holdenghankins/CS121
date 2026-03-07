@@ -16,11 +16,11 @@ std::string Name::getFirstName() {
 }
 
 std::string Name::getLastName() {
-    return Name::firstName;
+    return Name::lastName;
 }
 
 std::string Name::getLastFirst() {
-    return Name::lastName + " " + Name::firstName;
+    return Name::lastName + ", " + Name::firstName;
 }
 
 void Name::init(string firstName, string lastName) {

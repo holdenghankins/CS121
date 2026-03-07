@@ -49,8 +49,8 @@ Student::~Student() {
     graduationPtr = nullptr;
 }
 
-Name Student::getName() {
-    return *(Student::namePtr);
+Name* Student::getName() {
+    return Student::namePtr;
 }
 
 void Student::printStudent() {
@@ -61,4 +61,5 @@ void Student::printStudent() {
     cout << "Grad: ";
     Student::graduationPtr->printDate();
     cout << "Credits: " << Student::credits << endl;
+    cout << "____________________________________\n" << endl;
 }

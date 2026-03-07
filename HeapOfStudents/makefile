@@ -1,5 +1,5 @@
-program: address.o date.o name.o student.o main.o
-	g++ -g address.o date.o name.o student.o main.o -o program
+load: address.o date.o name.o student.o main.o
+	g++ -g address.o date.o name.o student.o main.o -o load
 
 address.o: address.cpp
 	g++ -c -g address.cpp
@@ -19,9 +19,10 @@ main: address.o date.o name.o student.o main.cpp
 clean:
 	rm *.o
 	rm program
+	rm load
 
-run: program
-	./program
+run: load
+	./load
 
-debug: program
-	gdb program
+debug: load
+	gdb load
