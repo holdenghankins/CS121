@@ -1,0 +1,76 @@
+public static void main(String[] args) {
+    Random random = new Random();
+    int numberToGuess;
+    int version
+
+    boolean exit = false;
+    while (!exit) {
+        numberToGuess = random.nextInt() % 101;
+        int version = askForVersion();
+        if (version == 1) {
+            PlayerGuess(numberToGuess);
+        }
+        else if (version == 2) {
+            ComputerGuess(numberToGuess, 0, 100);
+        }
+    }
+}
+
+public static int askForVersion() {
+    Scanner scanner = new scanner(System.out);
+    System.out.println("Which version:\n(0) exit\n(1) User Guess\n(2) Computer Guess");
+    int version = scanner.nextInt;
+    if (version != 0 && version != 1 && version != 2 ) {
+        System.out.println("Invalid Input")
+        return askForVersion(); 
+    }
+    else {
+        return version;
+    }
+}
+
+public void playerGuess(int numberToGuess) {
+    Scanner scanner = new scanner(System.out);
+    System.out.println("Guess a number 1 through 100");
+    int playerGuess = scanner.nextInt();
+
+    if (playerGuess == numberToGuess) {
+        return;
+    }
+
+    if (playerGuess > number) {
+        System.out.println("Too high");
+    }
+    else {
+        System.out.println("Too low");
+    }
+    playerGuess(numberToGuess);
+}
+
+public void computerGuess(int numberToGuess, int low, int high) {
+    int guess = (low + high) / 2;
+    if (guess == low) {
+        guess++;
+    }
+
+    System.out.println("I guess " + guess);
+    char input == getHighLowCorrect()
+    if (input == 'l') {
+        computerGuess(numberToGuess, guess + 1, high);
+    }
+    if (input == 'h') {
+        computerGuess(numberToGuess, low, high - 1);
+    }
+    return;
+}
+
+public char getHighLowCorrect() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Too (H)igh, too (L)ow, or (C)orrect?");
+    char input = scanner.nextChar().toLowerCase();
+    if (input != 'h' && input != 'l' && input != 'c') {
+        System.out.println("Invalid Input");
+        return getHighLowCorrect();
+    }
+    return input;
+}
