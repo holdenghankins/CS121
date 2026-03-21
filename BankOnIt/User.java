@@ -22,7 +22,7 @@ public abstract class User implements HasMenu {
             System.out.println("\nLogin successful\n");
             return true;
         } else {
-            System.out.println("\nLogin unsuccessful\n");
+            System.out.println("\nLogin unsuccessful");
             return false;
         }
     }
