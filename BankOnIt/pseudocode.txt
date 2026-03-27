@@ -1,17 +1,109 @@
 I feel like most of this is written on the assignment page, but I'll try my best to add some stuff here
 
-User abst.
+Serializable -> User abst.
     login() - prompt, calls login(userName, pin)
+    public static long serialVersionUID = 1L
 
 User -> Customer
     changePin() calls User.setPin() + prompt
     menu() - really should be its own class but I won't change it
 
+User -> Admin
 
-CheckingAccount
+
+
+Serializable -> CheckingAccount
+    public static long serialVersionUID = 1L
     GetBalanceString() - toString
     setBalance(void) - clears???
     makeDeposit/Withdraw - +- to balance
 
-CheckingAccount -> SavingsAccount
+CheckingAccount => SavingsAccount
     calcIntretestRate - balance *= (1 + (interestRate / 100))
+
+
+Serializable -> Bank
+    public static long serialVersionUID = 1L
+    load/save - check below code
+    fullCustomerReport - iterate through arraylist calling report()
+    addUser - call save
+    
+
+
+
+
+
+_how to do serialization_
+public Object {
+    .
+    .
+    .
+    public void saveObject() {
+
+        Object obj = new Object();
+        try {
+            FileOutputStream fOut = new FileOutputStream("Object.dat");
+            ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+            objOut.writeObject(obj);
+            objOut.close;
+            fOut.close;
+        } catch (exception e) {
+            System.out.println(e.getMessage);
+        }
+    }
+
+    public void loadObject() {
+        Object obj;
+        try {
+            FileInputStream fIn = new FileInputStream("Object.dat");
+            ObjectInputStream objIn = new ObjectInputStream(fIn);
+            obj = (Object) objIn.readObject();
+            objIn.close();
+            fIn.close();
+        } catch (exception e) {
+            System.out.println(e.getMessage);
+        }
+    }
+}
+
+
+public class Database {
+    private ArrayList<Obj> objects = new ArrayList<Objects>();
+
+    public static void main(String[] args) {
+        new Database();
+    }
+
+    public Database() {
+        initDatabase();
+        saveDatabase();
+        loadDatabase();
+    }
+
+    public void initDatabase() { // Instantiate every instance in array
+        for (int i = 0; i < n; i++) {
+            arrList.add(new Object());
+        }
+    }
+
+    public void saveDatabase() {
+        try {
+            FileOutputStream fOut = new FileOutputStream("Object.dat");
+            ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+            objOut.writeObject(Objects);
+        }
+    } catch (exception e) {
+        System.out.println(e.getMessage);
+    }
+
+    public void loadDatabase() {
+        try {
+            FileInputStream fIn = new FileInputStream("Object.dat");
+            ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+            Objects = (ArrayList<Objects>) objIn.readObject();
+
+        }
+    } catch (exception e) {
+        System.out.println(e.getMessage);
+    }
+}
