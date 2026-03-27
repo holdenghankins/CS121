@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Customer extends User {
-    CheckingAccount checking;
-    SavingsAccount savings;
+    private CheckingAccount checking;
+    private SavingsAccount savings;
 
     public Customer() {
         checking = new CheckingAccount();
@@ -17,18 +17,8 @@ public class Customer extends User {
     }
 
     public void main() {
-        // I am unsure how we are supposed to get the cedentials for this iteration, so I am just hard coding them for now
-        setUserName("Alice");
-        setPin("1111");
-
-        // Loops until user logs in to an account
-        boolean loggedIn = false;
-        while (!loggedIn) {
-            loggedIn = login();
-        }
-
         // Loops main menu until user quits
-        Scanner scanner = new Scanner(System.in); // I don't think I am allowed to make this scanner shared so it isn't
+        Scanner scanner = new Scanner(System.in);
         int input = 1; // Placeholder to initiate loop
         while (input != 0) {
             System.out.println(menu());
@@ -53,7 +43,7 @@ public class Customer extends User {
     }
 
     public void start() {
-        // Empty for now
+        main();
     }
 
     /**
@@ -67,13 +57,19 @@ public class Customer extends User {
         Scanner changePinInput = new Scanner(System.in);
         System.out.print("New pin: ");
         setPin(changePinInput.nextLine());
+        changePinInput.close();
+    }
+
+    public String updateSavings() {
+        savings.calcInterestRate();
+        return super.getUserName() + " new balance: " + savings.getBalanceString();
     }
 
     /**
      * I could not find an exact example of how this should look so I am assuming it is both account balances + interest rate
      */
     public String getReport() {
-        return "Customer: " + getUserName() + "\nChecking Balance: " + checking.getBalance() + 
-        "\nSavings Balance: " + savings.getBalance() + " + " + savings.getInterestRate() + " interest";
+        return "User: " + super.getUserName() + ", Checking: " + checking.getBalanceString() + ", Savings: "
+        + savings.getBalanceString();
     }
 }

@@ -13,7 +13,7 @@ public class SavingsAccount extends CheckingAccount {
     public void main() {
         super.main();
     }
-
+    
     /**
      * Adds the amount earned in a year to the user's balance
      */

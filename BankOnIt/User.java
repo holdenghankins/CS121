@@ -11,12 +11,13 @@ public abstract class User implements HasMenu {
      * Asks for user to provide a username and "pin" (String, unchecked for length or composition)
      * Informed the user as to the successfulness of their attempt
      */
-    public boolean login() {
+    public boolean login() {        
         Scanner scanner = new Scanner(System.in);
         System.out.print("User name: ");
         String userNameInput = scanner.nextLine();
         System.out.print("Pin: ");
         String pinInput = scanner.nextLine();
+        scanner.close();
 
         if (login(userNameInput, pinInput)) {
             System.out.println("\nLogin successful\n");

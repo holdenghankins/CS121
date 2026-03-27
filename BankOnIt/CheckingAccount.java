@@ -19,6 +19,7 @@ public class CheckingAccount implements HasMenu {
             input = scanner.nextInt();
             switch(input) {
                 case 0: // EXIT
+                    scanner.close();
                     return;
                 case 1: // BALANCE
                     checkBalance();
@@ -33,6 +34,7 @@ public class CheckingAccount implements HasMenu {
                     System.out.println("Invalid input");
             }
         } // end while
+        scanner.close();
     } // end main
 
     /**
@@ -55,7 +57,7 @@ public class CheckingAccount implements HasMenu {
     }
 
     public String getBalanceString() {
-        return Double.toString(balance);
+        return "$" + Double.toString(balance);
     }
 
     public void checkBalance() {
@@ -70,8 +72,10 @@ public class CheckingAccount implements HasMenu {
         Scanner readDouble = new Scanner(System.in);
         try {
             double d = readDouble.nextDouble();
+            readDouble.close();
             return d;
         } catch(Exception e) {
+            readDouble.close();
             return -1; // Documentation says "return 0", but user could well use '0' to cancel a misinput, so -1 seems more fitting
         }
     }
