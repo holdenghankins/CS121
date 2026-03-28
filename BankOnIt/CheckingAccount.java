@@ -4,7 +4,7 @@ public class CheckingAccount implements HasMenu {
     private double balance;
 
     public CheckingAccount() {
-        balance = 0;
+        balance = 1000;
     }
 
     public CheckingAccount(double balance) {
