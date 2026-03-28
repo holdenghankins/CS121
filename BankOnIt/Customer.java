@@ -1,3 +1,7 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Customer extends User {
@@ -65,11 +69,38 @@ public class Customer extends User {
         return super.getUserName() + " new balance: " + savings.getBalanceString();
     }
 
-    /**
-     * I could not find an exact example of how this should look so I am assuming it is both account balances + interest rate
-     */
     public String getReport() {
         return "User: " + super.getUserName() + ", Checking: " + checking.getBalanceString() + ", Savings: "
         + savings.getBalanceString();
+    }
+
+    public void saveCustomer() {
+        try {
+            FileOutputStream fOut = new FileOutputStream("/workspaces/CS121/BankOnIt/Customer.dat");
+            ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+            objOut.writeObject(this);
+            objOut.close();
+            fOut.close();
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+    }
+
+    public void loadCustomer() {
+        try {
+            FileInputStream fIn = new FileInputStream("/workspaces/CS121/BankOnIt/Customer.dat");
+            ObjectInputStream objIn = new ObjectInputStream(fIn);
+
+            Customer customer = (Customer) objIn.readObject();
+            setUserName(customer.getUserName());
+            setPin(customer.getPin());
+            checking = customer.checking;
+            savings = customer.savings;
+
+            objIn.close();
+            fIn.close();
+        } catch (Exception e) {
+            System.out.println("error");
+        }
     }
 }

@@ -5,6 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "CS121_781c771e"
+        },
+        {
+            "type": "java",
+            "name": "JavaGuesser",
+            "request": "launch",
+            "mainClass": "JavaGuesser",
+            "projectName": "CS121_781c771e"
+        },
+        {
             "type": "cmake",
             "request": "launch",
             "name": "CMake: Configure project",
@@ -12,6 +26,5 @@
             "clean": false,
             "configureAll": false
         }
-        
     ]
 }

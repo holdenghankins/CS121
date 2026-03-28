@@ -1,20 +1,26 @@
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class Bank {
+public class Bank implements HasMenu{
     private Admin admin;
     // Could be optimized with an RB tree, but specifications ask for ArrayList and I do not want to make one by hand
-    private ArrayList<Customer> customers;
+    private CustomerList customers;
 
     public Bank(){
         admin = new Admin("admin", "0000");
-        customers = new ArrayList<>();
+        customers = new CustomerList();
+        loadSampleCustomers();
         loadCustomers();
+        start();
+        saveCustomers();
     }
 
-    public void main() {
-        start();
+    public static void main(String[] args) {
+        new Bank();
     }
 
     public void loadSampleCustomers() {
@@ -24,19 +30,36 @@ public class Bank {
         customers.add(new Customer("Pjeffe", "3343"));
         customers.add(new Customer("Robert", "1644"));
         customers.sort(Comparator.comparing(Customer::getUserName));
+        saveCustomers();
     }
 
     public void loadCustomers() {
-        loadSampleCustomers();
+        try {
+            FileInputStream fIn = new FileInputStream("/workspaces/CS121/BankOnIt/Customers.dat");
+            ObjectInputStream objIn = new ObjectInputStream(fIn);
+            customers = (CustomerList) objIn.readObject();
+            objIn.close();
+            fIn.close();
+        } catch (Exception e) {
+            System.out.println("error");
+        }
     }
 
     public void saveCustomers() {
         customers.sort(Comparator.comparing(Customer::getUserName));
+        try {
+            FileOutputStream fOut = new FileOutputStream("/workspaces/CS121/BankOnIt/Customers.dat");
+            ObjectOutputStream objOut = new ObjectOutputStream(fOut);
+            objOut.writeObject(customers);
+            objOut.close();
+        } catch (Exception e) {
+            System.out.println("error");
+        }
     }
 
     public void fullCustomerReport() {
-        for (Customer customer : customers) {
-            System.out.println(customer.getReport());
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println(customers.get(i).getReport());
         }
     }
 
@@ -57,8 +80,8 @@ public class Bank {
     }
 
     public void applyIntrest() {
-        for (Customer customer : customers) {
-            System.out.println(customer.updateSavings());
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println(customers.get(i).updateSavings());
         }
     }
 
@@ -127,7 +150,7 @@ public class Bank {
         return -1;
     }
 
-    public void menu() {
+    public String menu() {
         Scanner scanner = new Scanner(System.in);
         int input = -1; // Arbitrary to start loop
         while (input != 0) {
@@ -148,10 +171,9 @@ public class Bank {
                     System.out.println("\nInvalid input");
                     input = -1;
             }
-            System.out.print("0) Exit system\n1) Login as admin\n2) Login as customer\n\nAction: ");
-            input = scanner.nextInt();
         }
         System.out.println("\nExiting");
+        return ""; // has to return something to extend HasMenu
     }
 
     public void start() {
